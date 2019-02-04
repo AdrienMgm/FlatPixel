@@ -1,0 +1,18 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: '10bitmedium', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+	"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+	sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: #FF6B6A;
+}
+
+@font-face {
+	font-family: '10bitmedium';
+	src: url('/fonts/10bit-webfont.woff2') format('woff2'),
+			url('/fonts/10bit-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

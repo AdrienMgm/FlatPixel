@@ -1,0 +1,47 @@
+.image-face {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	&__img {
+		height: 100%;
+	}
+	&__desc {
+		position: absolute;
+		top: 0;
+		box-sizing: border-box;
+		background-color: rgba($color: #ff6B6A, $alpha: .7);
+		width: 100%;
+		height: 100%;
+		padding: 12px;
+		opacity: 0;
+		transform: translateY(20px);
+		transition: transform .3s, opacity .3s;
+		
+		p {
+			font-size: 14px;
+			color: #FFDB4A;
+			margin: 0;
+
+			.hashtag {
+				display: inline-block;
+				color: #7CFF85;
+			}
+
+			a {
+				color: #86E0FE;
+				text-decoration: none;
+				transition: opacity .3s;
+				&:hover {
+					opacity: 0.6;
+				}
+			}
+		}
+	}
+
+	&:hover {
+		.image-face__desc {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
