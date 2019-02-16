@@ -5,7 +5,7 @@ class Tile extends Component {
 
 	render() {
 
-		const {index, width, side, zIndex, center, left, right, fixed, router} = this.props;
+		const {width, side, zIndex, center, left, right, fixed, router} = this.props;
 
 		const Fixed = fixed;
 
