@@ -2,9 +2,9 @@ const fs = require('fs-extra')
 
 console.log('Post build')
 const src = './build'
-const dist = '../dist'
+const docs = '../docs'
 
-fs.move(src, dist, { overwrite: true }, err => {
-	if (err) return console.error('- Move dist: Error : ', err)
-	console.log('- Move dist: success')
+fs.move(src, docs, { overwrite: true }, err => {
+	if (err) return console.error('- Move docs: Error : ', err)
+	console.log('- Move docs: success')
 })
