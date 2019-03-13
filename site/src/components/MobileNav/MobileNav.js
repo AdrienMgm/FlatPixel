@@ -9,7 +9,6 @@ class MobileNav extends Component {
 	}
 
 	componentDidMount() {
-		console.log('TEUB')
 		window.addEventListener('scroll', this.onScroll);
 		this.onScroll();
 	}
@@ -18,8 +17,8 @@ class MobileNav extends Component {
 	}
 
 	onScroll = () => {
-		console.log('SCROLL', document.documentElement.scrollTop > window.innerHeight)
-		if(document.documentElement.scrollTop > window.innerHeight) {
+		const el = document.scrollingElement || document.documentElement;
+		if(el.scrollTop > (window.innerHeight - 100)) {
 			this.setState({
 				visible: true,
 			})
@@ -30,7 +29,6 @@ class MobileNav extends Component {
 		}
 	}
 
-
 	render() {
 
 		const {visible} = this.state;
@@ -39,12 +37,14 @@ class MobileNav extends Component {
 			<div
 				style={{
 					position: 'fixed',
-					top: visible?0:'-40px',
+					top: visible?0:'-80px',
 					width: '100%',
-					height: '40px',
+					padding: '14px 10px 10px',
+					boxSizing: 'border-box',
 					zIndex: 1,
 					transition: 'top .5s',
-					background: 'rgba(255,255,255,0.6)',
+					background: '#FF6B6A',
+					boxShadow: '0px 10px 53px -1px rgba(0,0,0,0.2)',
 				}}
 			>s
 				<Nav />

@@ -57,8 +57,12 @@ class Tile extends Component {
 						}
 					</div>
 				</div>
-				{fixed && 
-					<Fixed />
+				{fixed &&
+					<div style={{
+						margin: '10px 0',
+					}}>
+						<Fixed />
+					</div>
 				}
 			</div>
 		);

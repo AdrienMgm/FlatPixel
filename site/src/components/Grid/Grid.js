@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Nav from '../Nav/Nav';
-import Tile from '../Tile/Tile'
-import ImageFace from '../ImageFace/ImageFace'
-import MobileNav from '../MobileNav/MobileNav'
+import Tile from '../Tile/Tile';
+import ImageFace from '../ImageFace/ImageFace';
+import MobileNav from '../MobileNav/MobileNav';
+import About from '../About/About';
 import './style.scss';
 
 const MOBILE_WIDTH_TRIGGER = 500;
@@ -150,10 +151,11 @@ class Grid extends Component {
 							left={
 								<h1>Contact</h1>
 							}
-							right={false}
+							right={<About/>}
 							fixed={Nav}
 							router={{
-								contact: 'left'
+								contact: 'left',
+								about: 'right',
 							}}
 						/>
 					</div>);
@@ -224,21 +226,32 @@ class Grid extends Component {
 							side={page} 
 							zIndex="10"
 							center={
-								<img style={{
-									position: 'relative',
-									width: '100%',
-									top: '50%',
-									transform: 'translateY(-50%)',
-								}}
-								src={'./images/FPlogo.png'} alt='Flat Pixel Logo'/>
+								<div
+									style={{
+										position: 'relative',
+										width: '100%',
+										top: '50%',
+										transform: 'translateY(-50%)',
+										padding: '10px',
+										boxSizing: 'border-box',
+									}}
+								>
+									<img
+									style={{
+										width: '100%',
+									}}
+									src={'./images/FPlogo.png'} alt='Flat Pixel Logo'/>
+									<Nav/>
+								</div>
 							}
 							left={
 								<h1>Contact</h1>
 							}
-							right={false}
-							fixed={Nav}
+							right={<About/>}
+							// fixed={Nav}
 							router={{
-								contact: 'left'
+								contact: 'left',
+								about: 'right',
 							}}
 						/>
 					</div>);

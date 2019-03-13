@@ -11,13 +11,13 @@ class Nav extends Component {
 					<Link to="/">Home</Link>
 				</li> */}
 				<li>
-					<Link to="./about">About</Link>
+					<Link to="./about">ABOUT</Link>
 				</li>
 				<li>
-					<Link to="./activities">activities</Link>
+					<Link to="./activities">ACTIVITIES</Link>
 				</li>
 				<li>
-					<Link to="./contact">contact</Link>
+					<Link to="./contact">CONTACT</Link>
 				</li>
 			</ul>
 		);

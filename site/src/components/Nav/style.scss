@@ -1,17 +1,19 @@
 .nav {
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	font-size: 16px;
-	margin: 10px;
+	margin: 0 5px;
 	padding: 0;
+	justify-content: space-between;
+	display: flex;
 
 	li {
 		display: inline-block;
 		margin: 0;
 		a {
-			color: #333;
+			color: #FFF;
 			text-decoration: none;
-			margin: 0 10px;
+			margin: 0;
 			transition: opacity .3s;
 			
 			&:hover {
