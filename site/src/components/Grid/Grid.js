@@ -226,8 +226,10 @@ class Grid extends Component {
 							zIndex="10"
 							center={
 								<img style={{
-										width: '100%',
-									}}
+									width: '100%',
+									boxSizing: 'border-box',
+									padding: '0 20px',
+								}}
 								src={'./images/FPlogo.png'} alt='Flat Pixel Logo'/>
 							}
 							left={
