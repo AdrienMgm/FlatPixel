@@ -9,7 +9,46 @@ import './style.scss';
 const MOBILE_WIDTH_TRIGGER = 500;
 const GRID_ROW = 4;
 const DATA = {
-	about: false,
+	about: {
+		tiles: [
+			{
+				imgSrc: './images/about/join_us.png',
+			},
+			{
+				imgSrc: './images/about/adrien.png',
+			},
+			{
+				imgSrc: './images/about/join_us.png',
+			},
+			{
+				imgSrc: './images/about/david.png',
+			},
+			{
+				imgSrc: './images/about/join_us.png',
+			},
+			{
+				imgSrc: './images/about/angie.png',
+			},
+			{
+				imgSrc: './images/about/ubisoft.png',
+			},
+			{
+				imgSrc: './images/about/nick.png',
+			},
+			{
+				imgSrc: './images/about/spaceape.png',
+			},
+			{
+				imgSrc: './images/about/magicpockets.png',
+			},
+			{
+				imgSrc: './images/about/join_us.png',
+			},
+			{
+				imgSrc: './images/about/marcin.png',
+			},
+		],
+	},
 	activities: {
 		tiles: [
 			{
@@ -103,6 +142,52 @@ class Grid extends Component {
 		}
 	}
 
+	getTileWithData(data) {
+		const { initGridCol, initGridRow } = this.state;
+		// console.log(initGridCol, initGridRow)
+
+		let tiles = [];
+
+
+		for(let i = 0; i < initGridRow; i++) {
+			tiles[i] = [];
+			for(let j = 0; j < initGridCol; j++) {
+				tiles[i][j] = 'test'+i+j;
+
+				if(initGridRow/2-2 === i && initGridCol/2-2 === j) {
+					tiles[i][j] = data[0];
+				} else if(initGridRow/2-2 === i && initGridCol/2-1 === j) {
+					tiles[i][j] = data[1];
+				} else if(initGridRow/2-2 === i && initGridCol/2 === j) {
+					tiles[i][j] = data[2];
+				} else if(initGridRow/2-2 === i && initGridCol/2+1 === j) {
+					tiles[i][j] = data[3];
+				} else if(initGridRow/2-1 === i && initGridCol/2+1 === j) {
+					tiles[i][j] = data[4];
+				} else if(initGridRow/2 === i && initGridCol/2+1 === j) {
+					tiles[i][j] = data[5];
+				} else if(initGridRow/2+1 === i && initGridCol/2+1 === j) {
+					tiles[i][j] = data[6];
+				} else if(initGridRow/2+1 === i && initGridCol/2 === j) {
+					tiles[i][j] = data[7];
+				} else if(initGridRow/2+1 === i && initGridCol/2-1 === j) {
+					tiles[i][j] = data[8];
+				} else if(initGridRow/2+1 === i && initGridCol/2-2 === j) {
+					tiles[i][j] = data[9];
+				} else if(initGridRow/2 === i && initGridCol/2-2 === j) {
+					tiles[i][j] = data[10];
+				} else if(initGridRow/2-1 === i && initGridCol/2-2 === j) {
+					tiles[i][j] = data[11];
+				}
+			}
+		}
+
+
+		console.log('tiles', tiles)
+		return tiles;
+
+	}
+
 	isMobile() {
 		const body = document.documentElement.querySelector('body');
 		if(window.innerWidth<MOBILE_WIDTH_TRIGGER) {
@@ -117,13 +202,14 @@ class Grid extends Component {
 		const { initGridCol, initGridRow, tileSize, tileSizePx, page } = this.state;
 		let grid = [];
 		let activitiesTileCounter = 0;
+		const aboutTiles = this.getTileWithData(DATA.about.tiles);
 		// ROW
 		for(let row = 0; row<initGridRow; row++) {
 			// COL
 			for(let col = 0; col<initGridCol; col++) {
 
 				//-- CENTER 2X2
-				let firstCenter = (row === Math.floor(initGridRow/2)-1) && (col === Math.floor(initGridCol/2)-1);
+				const firstCenter = (row === Math.floor(initGridRow/2)-1) && (col === Math.floor(initGridCol/2)-1);
 
 				const isCenter = ((row === Math.floor(initGridRow/2)-1)
 				|| (row === Math.floor(initGridRow/2)))
@@ -182,7 +268,7 @@ class Grid extends Component {
 								<ImageFace data={DATA.activities.tiles[activitiesTileCounter%DATA.activities.tiles.length]}/>
 							}
 							right={
-								<h1></h1>
+								<ImageFace data={aboutTiles[row][col]}/>
 							}
 							router={{
 								activities: 'left',
