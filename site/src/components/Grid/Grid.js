@@ -144,10 +144,8 @@ class Grid extends Component {
 
 	getTileWithData(data) {
 		const { initGridCol, initGridRow } = this.state;
-		// console.log(initGridCol, initGridRow)
 
 		let tiles = [];
-
 
 		for(let i = 0; i < initGridRow; i++) {
 			tiles[i] = [];
@@ -182,8 +180,6 @@ class Grid extends Component {
 			}
 		}
 
-
-		console.log('tiles', tiles)
 		return tiles;
 
 	}
