@@ -4,6 +4,7 @@ import Tile from '../Tile/Tile';
 import ImageFace from '../ImageFace/ImageFace';
 import MobileNav from '../MobileNav/MobileNav';
 import About from '../About/About';
+import Contact from "../Contact/Contact";
 import './style.scss';
 
 const MOBILE_WIDTH_TRIGGER = 500;
@@ -30,16 +31,16 @@ const DATA = {
 				imgSrc: './images/about/angie.png',
 			},
 			{
-				imgSrc: './images/about/ubisoft.png',
+				imgSrc: './images/about/ubilogo.png',
 			},
 			{
-				imgSrc: './images/about/nick.png',
+				imgSrc: './images/about/nicklogo.png',
 			},
 			{
-				imgSrc: './images/about/spaceape.png',
+				imgSrc: './images/about/spaceapelogo.png',
 			},
 			{
-				imgSrc: './images/about/magicpockets.png',
+				imgSrc: './images/about/magiclogo.png',
 			},
 			{
 				imgSrc: './images/about/join_us.png',
@@ -232,9 +233,7 @@ class Grid extends Component {
 								}}
 								src={'./images/FPlogo.png'} alt='Flat Pixel Logo'/>
 							}
-							left={
-								<h1>Contact</h1>
-							}
+							left={<Contact/>}
 							right={<About/>}
 							fixed={Nav}
 							router={{
