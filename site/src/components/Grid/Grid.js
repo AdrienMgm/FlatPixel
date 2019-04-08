@@ -2,86 +2,11 @@ import React, { Component } from 'react';
 import Nav from '../Nav/Nav';
 import Tile from '../Tile/Tile';
 import ImageFace from '../ImageFace/ImageFace';
-import MobileNav from '../MobileNav/MobileNav';
 import About from '../About/About';
 import Contact from "../Contact/Contact";
 import './style.scss';
 
-const MOBILE_WIDTH_TRIGGER = 500;
 const GRID_ROW = 4;
-const DATA = {
-	about: {
-		tiles: [
-			{
-				imgSrc: './images/about/join_us.png',
-			},
-			{
-				imgSrc: './images/about/adrien.png',
-			},
-			{
-				imgSrc: './images/about/join_us.png',
-			},
-			{
-				imgSrc: './images/about/david.png',
-			},
-			{
-				imgSrc: './images/about/join_us.png',
-			},
-			{
-				imgSrc: './images/about/angie.png',
-			},
-			{
-				imgSrc: './images/about/ubilogo.png',
-			},
-			{
-				imgSrc: './images/about/nicklogo.png',
-			},
-			{
-				imgSrc: './images/about/spaceapelogo.png',
-			},
-			{
-				imgSrc: './images/about/magiclogo.png',
-			},
-			{
-				imgSrc: './images/about/join_us.png',
-			},
-			{
-				imgSrc: './images/about/marcin.png',
-			},
-		],
-	},
-	activities: {
-		tiles: [
-			{
-				imgSrc: './images/insta/1.jpg',
-				description: 'flat.pixel #gamedev',
-			},
-			{
-				imgSrc: './images/insta/2.jpg',
-				description: 'flat.pixel #crunchtime #nickelodeon #donottouch #deadline ☠️',
-			},
-			{
-				imgSrc: './images/insta/3.jpg',
-				description: 'flat.pixel Drawing on this new iPad is a fucking blast! #appicon #gamedev #gameart #doublecrunch #lovemyjob #astroblast',
-			},
-			{
-				imgSrc: './images/insta/4.jpg',
-				description: 'flat.pixel ASTROBLAST #appicon #gamedev #spacemarine',
-			},
-			{
-				imgSrc: './images/insta/5.jpg',
-				description: 'flat.pixel ASTROBLAST Pale Ale!@beavertownbeer has the best artwork on their cans, and the beer’s pretty good too! #scifibeer #beer #gamedev',
-			}
-		]
-	},
-	contact: {
-		tiles: [
-			{
-				content: 'This is contact'
-			}
-		]
-	},
-};
 
 class Grid extends Component {
 
@@ -90,17 +15,17 @@ class Grid extends Component {
 
 		this.state = {
 			initGridRow: GRID_ROW,
-			tileSize: this.isMobile() ? 100 : 100/GRID_ROW,
+			tileSize: 100/GRID_ROW,
 			tiles: props.tiles,
 			initGridCol: Math.floor(Math.ceil(window.innerWidth/(100/GRID_ROW/100*window.innerHeight)+1)/2)*2,
-			tileSizePx: this.isMobile() ? window.innerWidth : 100/GRID_ROW/100*window.innerHeight,
+			tileSizePx: 100/GRID_ROW/100*window.innerHeight,
 		}
 
 		this.onResize = this.onResize.bind(this);
 	}
 
 	componentDidMount() {
-		window.addEventListener('resize', this.onResize)
+		window.addEventListener('resize', this.onResize);
 		if(this.props.match){
 			this.setState({
 				page: this.props.match.params.page
@@ -122,11 +47,15 @@ class Grid extends Component {
 		// });
 	}
 
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.onResize);
+	}
+
 	onResize() {
 		this.setState({
-			tileSize: this.isMobile() ? 100 : 100/GRID_ROW,
+			tileSize: 100/GRID_ROW,
 			initGridCol: Math.floor(Math.ceil(window.innerWidth/(100/GRID_ROW/100*window.innerHeight)+1)/2)*2,
-			tileSizePx: this.isMobile() ? window.innerWidth :100/GRID_ROW/100*window.innerHeight,
+			tileSizePx: 100/GRID_ROW/100*window.innerHeight,
 		})
 	}
 
@@ -185,21 +114,11 @@ class Grid extends Component {
 
 	}
 
-	isMobile() {
-		const body = document.documentElement.querySelector('body');
-		if(window.innerWidth<MOBILE_WIDTH_TRIGGER) {
-			body.classList.add('is-mobile');
-			return true;
-		}
-		body.classList.remove('is-mobile');
-		return false;
-	}
-
 	getGridDesktop() {
 		const { initGridCol, initGridRow, tileSize, tileSizePx, page } = this.state;
 		let grid = [];
 		let activitiesTileCounter = 0;
-		const aboutTiles = this.getTileWithData(DATA.about.tiles);
+		const aboutTiles = this.getTileWithData(this.props.data.about.tiles);
 		// ROW
 		for(let row = 0; row<initGridRow; row++) {
 			// COL
@@ -242,7 +161,7 @@ class Grid extends Component {
 							}}
 						/>
 					</div>);
-				} else if(isCenter && !this.isMobile) {
+				} else if(isCenter) {
 					grid.push(<div key={row+''+col} className="grid__tile" style={{
 						width:tileSize+'vh',
 						height:tileSize+'vh',
@@ -262,106 +181,10 @@ class Grid extends Component {
 								<h1></h1>
 							}
 							left={
-								<ImageFace data={DATA.activities.tiles[activitiesTileCounter%DATA.activities.tiles.length]}/>
+								<ImageFace data={this.props.data.activities.tiles[activitiesTileCounter%this.props.data.activities.tiles.length]}/>
 							}
 							right={
 								<ImageFace data={aboutTiles[row][col]}/>
-							}
-							router={{
-								activities: 'left',
-								about: 'right',
-							}}
-							/>
-					</div>);
-					activitiesTileCounter++;
-				}
-
-			}
-		}
-		return grid;
-	}
-
-	getGridMobile() {
-		const { initGridCol, initGridRow, tileSize, tileSizePx, page } = this.state;
-		let grid = [];
-		let activitiesTileCounter = 0;
-		// ROW
-		for(let row = 0; row<initGridRow; row++) {
-			// COL
-			for(let col = 0; col<initGridCol; col++) {
-				//-- CENTER 2X2
-				let firstCenter = (row===0 && col===0);
-				const isCenter = ((row === Math.floor(initGridRow/2)-1)
-				|| (row === Math.floor(initGridRow/2)))
-				&& ((col === Math.floor(initGridCol/2)-1)
-				|| (col === Math.floor(initGridCol/2)));
-
-				if(firstCenter) {
-					grid.push(<div key={row+''+col} className="grid__tile" style={{
-						width:tileSize+'vw',
-						height:'100vh',
-					}}>
-						<Tile 
-							key={row+''+col} 
-							index={col+1 + row*initGridCol} 
-							size={1} 
-							width={tileSizePx}
-							side={page} 
-							zIndex="10"
-							center={
-								<div
-									style={{
-										position: 'relative',
-										width: '100%',
-										top: '50%',
-										transform: 'translateY(-50%)',
-										padding: '10px',
-										boxSizing: 'border-box',
-									}}
-								>
-									<img
-									style={{
-										width: '100%',
-									}}
-									src={'./images/FPlogo.png'} alt='Flat Pixel Logo'/>
-									<Nav/>
-								</div>
-							}
-							left={
-								<h1>Contact</h1>
-							}
-							right={<About/>}
-							// fixed={Nav}
-							router={{
-								contact: 'left',
-								about: 'right',
-							}}
-						/>
-					</div>);
-				} else if(isCenter && !this.isMobile) {
-					grid.push(<div key={row+''+col} className="grid__tile" style={{
-						width:tileSize+'vw',
-						height:tileSize+'vw',
-					}}></div>);
-				} else {
-					grid.push(<div key={row+''+col} className="grid__tile" style={{
-						width:tileSize+'vw',
-						height:tileSize+'vw',
-					}}>
-						<Tile 
-							key={row+''+col} 
-							index={col+1 + row*initGridCol} 
-							size={1} 
-							width={tileSizePx} 
-							side={page}
-							center={
-								<h1></h1>
-							}
-							left={
-								<ImageFace data={DATA.activities.tiles[activitiesTileCounter%DATA.activities.tiles.length]}/>
-							}
-							right={
-								<h1></h1>
 							}
 							router={{
 								activities: 'left',
@@ -391,23 +214,17 @@ class Grid extends Component {
 		}
 		
 		let grid = [];
-
-		if(this.isMobile()) {
-			grid = this.getGridMobile();
-		} else {
-			grid = this.getGridDesktop();
-		}
+		grid = this.getGridDesktop();
 
 		//-- GRID LEFT OFFSET POSITION (VERTICAL ALIGN)
 		let gridLeftOffset = (window.innerWidth - tileSizePx*initGridCol) / 2;
 
 		return (
 			<div className={"grid grid"+(!!this.state.page?' grid--'+this.state.page:'')}>
-				<MobileNav />
 				<div className="grid__wrapper" 
 					style={{
-						width: this.isMobile() ? window.innerWidth : initGridCol*tileSizePx,
-						transform: 'translateX('+(this.isMobile() ? 0 : gridLeftOffset)+'px)',
+						width: initGridCol*tileSizePx,
+						transform: 'translateX('+(gridLeftOffset)+'px)',
 					}} 
 				>
 					{grid}

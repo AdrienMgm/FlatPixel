@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import  Nav from "../Nav/Nav";
+import  Nav from "../../Nav/Nav";
 
 class MobileNav extends Component {
 
@@ -24,7 +23,8 @@ class MobileNav extends Component {
 			})
 		} else {
 			this.setState({
-				visible: false,
+				// visible: false,
+				visible: true,
 			})
 		}
 	}
@@ -39,6 +39,7 @@ class MobileNav extends Component {
 					position: 'fixed',
 					top: visible?0:'-80px',
 					width: '100%',
+					height: '38px',
 					padding: '14px 10px 10px',
 					boxSizing: 'border-box',
 					zIndex: 1,
@@ -46,7 +47,7 @@ class MobileNav extends Component {
 					background: '#FF6B6A',
 					boxShadow: '0px 10px 53px -1px rgba(0,0,0,0.2)',
 				}}
-			>s
+			>
 				<Nav />
 			</div>
 		);
