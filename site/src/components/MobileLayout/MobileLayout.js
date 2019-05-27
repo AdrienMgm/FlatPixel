@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import MobileNav from './MobileNav/MobileNav';
 import About from '../About/About';
+import Home from '../Home/Home';
 import Contact from '../Contact/Contact';
 import ImageFace from '../ImageFace/ImageFace';
 
@@ -50,24 +51,24 @@ class MobileLayout extends Component {
 		grid = content.map((item, i) => {
 			return <ImageFace key={i} data={item}/>
 		})
-		return grid;
+		return <div className="content-wrapper">{grid}</div>;
 	}
 
 	render() {
 
 		const {page} = this.state;
-
 		const PageComponent = {
 			'about': <About />,
 			'contact': <Contact />,
 			'activities': this.getActivities(),
 		}[page];
+		console.log(PageComponent)
 
 		return (
 			<div className="mobile-layout">
 				<MobileNav />
 				{PageComponent &&
-					PageComponent
+					PageComponent || <Home />
 				}
 			</div>
 		)

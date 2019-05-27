@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Nav from '../Nav/Nav';
 import Tile from '../Tile/Tile';
 import ImageFace from '../ImageFace/ImageFace';
+import Home from '../Home/Home';
 import About from '../About/About';
 import Contact from "../Contact/Contact";
 import './style.scss';
@@ -144,14 +145,7 @@ class Grid extends Component {
 							width={tileSizePx}  
 							side={page} 
 							zIndex="10"
-							center={
-								<img style={{
-									width: '100%',
-									boxSizing: 'border-box',
-									padding: '0 20px',
-								}}
-								src={'./images/FPlogo.png'} alt='Flat Pixel Logo'/>
-							}
+							center={<Home/>}
 							left={<Contact/>}
 							right={<About/>}
 							fixed={Nav}
