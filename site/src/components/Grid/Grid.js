@@ -178,7 +178,7 @@ class Grid extends Component {
 							width={tileSizePx} 
 							side={page}
 							center={
-								<h1></h1>
+								<></>
 							}
 							left={
 								<ImageFace data={this.props.data.activities.tiles[activitiesTileCounter%this.props.data.activities.tiles.length]}/>
