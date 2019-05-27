@@ -61,14 +61,13 @@ class MobileLayout extends Component {
 			'about': <About />,
 			'contact': <Contact />,
 			'activities': this.getActivities(),
-		}[page];
-		console.log(PageComponent)
+		}[page] || <Home />;
 
 		return (
 			<div className="mobile-layout">
 				<MobileNav />
 				{PageComponent &&
-					PageComponent || <Home />
+					PageComponent
 				}
 			</div>
 		)
