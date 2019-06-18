@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from "react-router-dom";
-import Grid from './components/Grid/Grid'
+import Grid from './components/Grid/Grid';
 import './App.scss';
 import MobileLayout from './components/MobileLayout/MobileLayout';
 
@@ -10,39 +10,51 @@ const DATA = {
 		tiles: [
 			{
 				imgSrc: './images/about/join_us.png',
+				onlyDesktop: true,
 			},
 			{
 				imgSrc: './images/about/adrien.png',
+				mobileOrder: 2,
 			},
 			{
 				imgSrc: './images/about/join_us.png',
+				onlyDesktop: true,
 			},
 			{
 				imgSrc: './images/about/david.png',
+				mobileOrder: 4,
 			},
 			{
 				imgSrc: './images/about/join_us.png',
+				onlyDesktop: true,
 			},
 			{
 				imgSrc: './images/about/angie.png',
+				mobileOrder: 3,
 			},
 			{
 				imgSrc: './images/about/ubilogo.png',
+				mobileOrder: 5,
 			},
 			{
 				imgSrc: './images/about/nicklogo.png',
+				mobileOrder: 5,
 			},
 			{
 				imgSrc: './images/about/spaceapelogo.png',
+				mobileOrder: 5,
 			},
 			{
 				imgSrc: './images/about/magiclogo.png',
+				mobileOrder: 5,
 			},
 			{
 				imgSrc: './images/about/join_us.png',
+				onlyDesktop: true,
 			},
 			{
 				imgSrc: './images/about/marcin.png',
+				mobileOrder: 1,
 			},
 		],
 	},

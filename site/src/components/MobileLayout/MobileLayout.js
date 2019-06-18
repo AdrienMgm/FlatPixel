@@ -44,9 +44,7 @@ class MobileLayout extends Component {
 	}
 
 	getActivities() {
-		
 		const content = this.props.data.activities.tiles;
-
 		let grid = [];
 		grid = content.map((item, i) => {
 			return <ImageFace key={i} data={item}/>
@@ -54,11 +52,24 @@ class MobileLayout extends Component {
 		return <div className="content-wrapper">{grid}</div>;
 	}
 
+	getAboutPage() {
+		const content = this.props.data.about.tiles;
+		return <div className="content-wrapper">
+			<About />
+			{content
+			.filter(item => !item.onlyDesktop)
+			.sort((a, b) => a.mobileOrder - b.mobileOrder)
+			.map((item, i) => {
+				return <ImageFace key={i} data={item}/>
+			})}
+		</div>;
+	}
+
 	render() {
 
 		const {page} = this.state;
 		const PageComponent = {
-			'about': <About />,
+			'about': this.getAboutPage(),
 			'contact': <Contact />,
 			'activities': this.getActivities(),
 		}[page] || <Home />;
