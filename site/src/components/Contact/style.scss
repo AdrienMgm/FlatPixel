@@ -1,24 +1,31 @@
+@import '../../vars.scss';
+
 .contact {
 	text-align: center;
 	padding: 20px;
 
 	font-family: 'retro';
-	color: #FFF4AD;
+	color: $yellow;
 	
 	h2 {
 		font-size: 28px;
 		margin-top: 0;
-		color: #cbfefd;
+		color: $light-blue;
 		
 		.is-mobile & {
 			font-size: 24px;
+		}
+
+		@media (min-width: 740px) {
+			font-size: 3vh;
 		}
 	}
 
 	img {
 		display: block;
 		margin: auto;
-		height: 220px;
+		width: 220px;
+		max-width: 100%;
 	}
 }
 .contact__map {

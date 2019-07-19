@@ -1,3 +1,5 @@
+@import '../../vars.scss';
+
 .image-face {
 	position: relative;
 	width: 100%;
@@ -15,7 +17,7 @@
 		position: absolute;
 		top: 0;
 		box-sizing: border-box;
-		background-color: rgba($color: #ff6B6A, $alpha: .7);
+		background-color: rgba($color: $light-red, $alpha: .7);
 		width: 100%;
 		height: 100%;
 		padding: 12px;
@@ -25,16 +27,16 @@
 		
 		p {
 			font-size: 14px;
-			color: #fff4ad;
+			color: $yellow;
 			margin: 0;
 
 			.hashtag {
 				display: inline-block;
-				color: #b2ffbd;
+				color: $light-green;
 			}
 
 			a {
-				color: #cbfefd;
+				color: $light-blue;
 				text-decoration: none;
 				transition: opacity .3s;
 				&:hover {

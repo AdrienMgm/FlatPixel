@@ -1,11 +1,13 @@
+@import '../../vars.scss';
+
 .about {
 	padding: 20px;
 
 	font-family: 'retro';
-	color: #FFF4AD;
+	color: $yellow;
 	
 	h2 {
 		margin-top: 0;
-		color: #FFF;
+		color: $white;
 	}
 }

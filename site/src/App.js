@@ -4,7 +4,7 @@ import Grid from './components/Grid/Grid';
 import './App.scss';
 import MobileLayout from './components/MobileLayout/MobileLayout';
 
-const MOBILE_WIDTH_TRIGGER = 500;
+const MOBILE_WIDTH_TRIGGER = 740;
 const DATA = {
 	about: {
 		tiles: [

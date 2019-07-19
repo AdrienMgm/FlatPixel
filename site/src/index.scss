@@ -7,6 +7,9 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background: #FF6B6A;
+
+	overflow-y: scroll; /* has to be scroll, not auto */
+  	-webkit-overflow-scrolling: touch;
 }
 
 @font-face {
