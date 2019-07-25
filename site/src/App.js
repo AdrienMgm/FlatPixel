@@ -61,8 +61,8 @@ const DATA = {
 	activities: {
 		tiles: [
 			{
-				imgSrc: './images/insta/1.jpg',
-				description: 'flat.pixel #gamedev',
+				imgSrc: './images/insta/games_first_london_2019.jpg',
+				description: 'flat.pixel #GamesFirstLondon2019',
 			},
 			{
 				imgSrc: './images/insta/2.jpg',
@@ -73,12 +73,24 @@ const DATA = {
 				description: 'flat.pixel Drawing on this new iPad is a fucking blast! #appicon #gamedev #gameart #doublecrunch #lovemyjob #astroblast',
 			},
 			{
+				imgSrc: './images/insta/clio_award.png',
+				description: 'flat.pixel We won a CLIO! #award #gamedev #gameart #lovemyjob #DNT',
+			},
+			{
+				imgSrc: './images/insta/clio_award_2.png',
+				description: 'flat.pixel We won a CLIO! #award #gamedev #gameart #lovemyjob #DNT',
+			},
+			{
 				imgSrc: './images/insta/4.jpg',
 				description: 'flat.pixel ASTROBLAST #appicon #gamedev #spacemarine',
 			},
 			{
 				imgSrc: './images/insta/5.jpg',
 				description: 'flat.pixel ASTROBLAST Pale Ale!@beavertownbeer has the best artwork on their cans, and the beer’s pretty good too! #scifibeer #beer #gamedev',
+			},
+			{
+				imgSrc: './images/insta/office_2019.jpg',
+				description: 'flat.pixel move to the new offices #Paris #cosy #BigLogo',
 			}
 		]
 	},
